@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>holycheck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css?v=7" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <h1>holycheck</h1>
+    </div>
+    <div class="top-actions">
+      <button id="btnHistory" class="btn ghost" type="button">история</button>
+      <button id="btnClearLogs" class="btn ghost" type="button" title="очистить последний скан и логи">очистить логи</button>
+      <button id="btnStop" class="btn ghost danger" type="button">стоп</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="drop" class="drop">
+      <div class="drop-frame">
+        <p class="drop-title">брось .jar сюда</p>
+        <p class="drop-sub">быстрый скан → ML ×3 (двухфакторно)</p>
+        <div class="drop-actions">
+          <label class="btn primary">
+            выбрать файлы
+            <input id="fileInput" type="file" accept=".jar,.zip" multiple hidden />
+          </label>
+          <label class="llm-toggle">
+            <input id="useMl" type="checkbox" checked />
+            <span>этап ML</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress" class="progress hidden">
+      <div class="phase-row">
+        <span id="phaseFast" class="phase-pill">1 · fast</span>
+        <span id="phaseMl" class="phase-pill">2 · ml ×3</span>
+      </div>
+      <div class="progress-bar"><i id="barFill"></i></div>
+      <div class="progress-meta">
+        <p id="progressText" class="mono">ожидание…</p>
+        <p id="progressRate" class="mono rate">— мод/мин</p>
+      </div>
+    </section>
+
+    <section id="results" class="results"></section>
+  </main>
+
+  <aside id="historyPanel" class="history hidden" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>история</h2>
+      <div class="drawer-head-actions">
+        <button id="btnClearLogsHist" class="btn ghost" type="button">очистить последнюю</button>
+        <button id="historyClose" class="btn ghost" type="button">закрыть</button>
+      </div>
+    </div>
+    <div id="historyBody" class="drawer-body"></div>
+  </aside>
+
+  <aside id="drawer" class="drawer hidden" aria-hidden="true">
+    <div class="drawer-head">
+      <div>
+        <p class="mono small" id="drawerMeta"></p>
+        <h2 id="drawerTitle">детали</h2>
+      </div>
+      <div class="drawer-head-actions">
+        <button id="btnReport" class="btn report" type="button" title="скопировать репорт для спора">report</button>
+        <button id="drawerClose" class="btn ghost" type="button">закрыть</button>
+      </div>
+    </div>
+    <div id="drawerBody" class="drawer-body"></div>
+  </aside>
+  <div id="backdrop" class="backdrop hidden"></div>
+
+  <script src="/static/app.js?v=10"></script>
+</body>
+</html>

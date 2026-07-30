@@ -1,0 +1,15 @@
+.venv/
+.env
+logs/*
+!logs/.gitkeep
+reports/*
+!reports/.gitkeep
+uploads/*
+!uploads/.gitkeep
+__pycache__/
+*.pyc
+.DS_Store
+downloaded-from-prod/
+holycheck-app/
+mods/*.jar
+mods/**/*.jar
