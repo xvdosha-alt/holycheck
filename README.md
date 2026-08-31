@@ -1,8 +1,13 @@
+EN | [RU](docs/README_RU.md)
+
 # holycheck
 
-Сканер Minecraft-модов на **ЗПО** (запрещённые чит-функции): fast-эвристики + опционально ML (двухфакторно).
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
-## Быстрый старт
+
+Minecraft mod scanner for **ZPO** (forbidden cheat features): fast heuristics + optional ML (two-factor).
+
+## Quick start
 
 ```bash
 python3 -m venv .venv
@@ -22,28 +27,28 @@ UI: http://127.0.0.1:8787
 .venv/bin/python check_zpo.py path/to/mod.jar
 ```
 
-## Возможности
+## Features
 
-- Fast-скан: паттерны ЗПО, structural hitbox, маскировка под легит-моды, чёрный список
-- ML (Clodex/OpenAI-compatible): батч-скан классов мода, приоритет entrypoint над nested libs
-- Детект серверных репаков `trntr` / `trntr_pth` (не ЗПО, пометка в отчёте)
-- MC &lt; 1.16: только fast, ML пропускается
-- Forge `mods.toml`: версия Minecraft из dependency, не из version мода
-- Web UI: загрузка пачки, прогресс, история, отчёт
+- Fast scan: ZPO patterns, structural hitbox, disguise as legit mods, blacklist
+- ML (Clodex/OpenAI-compatible): batch scan of mod classes, entrypoint priority over nested libs
+- Detect server repacks `trntr` / `trntr_pth` (not ZPO, flagged in report)
+- MC < 1.16: fast only, ML skipped
+- Forge `mods.toml`: Minecraft version from dependency, not from mod version
+- Web UI: batch upload, progress, history, report
 
-## Метрики UI
+## UI metrics
 
-- красный — ЗПО %
-- фиолетовый — обфускация %
-- зелёный — чисто
-- в карточке показывается версия Minecraft (`MC 1.20.1`), если удалось вытащить из метаданных
+- red - ZPO %
+- purple - obfuscation %
+- green - clean
+- card shows Minecraft version (`MC 1.20.1`) when extracted from metadata
 
-## Конфиг
+## Config
 
-Скопируй `.env.example` → `.env`. Ключ API в репозиторий не кладётся.
+Copy `.env.example` -> `.env`. API key is not stored in the repository.
 
-| Переменная | Описание |
+| Variable | Description |
 |---|---|
-| `LLM_MAX_CLASSES` | классов за один ML-запрос (батч) |
-| `LLM_MAX_TOTAL_CLASSES` | максимум классов мода на скан |
-| `LLM_MODEL` | модель Clodex |
+| `LLM_MAX_CLASSES` | classes per ML request (batch) |
+| `LLM_MAX_TOTAL_CLASSES` | max mod classes per scan |
+| `LLM_MODEL` | Clodex model |
